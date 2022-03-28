@@ -8,11 +8,6 @@ namespace DrawAndGuessV3.Pages
     {
         public void OnPost()
         {
-            User user = new User();
-            user.Name = Request.Form["Name"];
-
-            Console.WriteLine(user.Name);
-            //return Redirect("~/Game");
         }
         public void OnGet()
         {
