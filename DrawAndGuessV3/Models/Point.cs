@@ -1,4 +1,4 @@
-namespace SignalRDraw
+namespace DrawAndGuessV3.Models
 {
     public class Point {
         public int X { get; set; }

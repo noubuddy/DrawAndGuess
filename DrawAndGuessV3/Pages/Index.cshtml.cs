@@ -15,7 +15,7 @@ namespace DrawAndGuessV3.Pages
             _logger = logger;
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPostSetName()
         {
             User user = new User(Request.Form["Name"]);
             Session session = new Session();
@@ -25,11 +25,12 @@ namespace DrawAndGuessV3.Pages
             Console.WriteLine(session.SessionID);
             foreach (var us in Session.UserList)
             {
-                Console.WriteLine(us.Item2);
+                Console.WriteLine(us.Item2.ToString());
             }
 
-
-            return Redirect($"Game?username={user.Name}&session={session.SessionID}");
+            HttpContext.Session.SetString("name", user.Name);
+            return Redirect("Index");
+            // return Redirect($"Game?username={user.Name}&session={session.SessionID}");
         }
 
         public void OnGet()

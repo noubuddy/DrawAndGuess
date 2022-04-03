@@ -4,7 +4,7 @@
     ViewData["Title"] = "Home page";
 }
 
-<form class="form-group" method="post">
+<form class="form-group" method="post" asp-page-handler="SetName">
     <div class="form-group">
         <label for="Name" class="col-sm-2 control-label">Nickname</label>
         <div class="col-sm-10">
@@ -17,3 +17,20 @@
         </div>
     </div>
 </form>
+
+<div style="padding-top: 30px;">
+<table>
+  <tr>
+    <td>Session id</td>
+    <td>Players</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>4</td>
+  </tr>
+</table>
+</div>
