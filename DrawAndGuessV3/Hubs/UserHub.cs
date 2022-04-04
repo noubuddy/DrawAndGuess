@@ -1,15 +1,16 @@
+using Microsoft.AspNetCore.SignalR;
 using DrawAndGuessV3.Models;
+using DrawAndGuessV3.Modules;
 
-#nullable disable
-
-namespace DrawAndGuessV3.Modules
+namespace SignalRDraw
 {
-    public class Session
+    public class UserHub : Hub
     {
-        public static List<User> UserList = new();
+        private static List<User> UserList = Session.UserList;
 
-        public Session()
+        public async Task SendMessage(string user)
         {
+            await Clients.All.SendAsync("RecieveUser", user);
         }
 
         public void AddUser(User user)

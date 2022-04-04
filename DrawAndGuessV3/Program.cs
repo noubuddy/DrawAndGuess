@@ -18,6 +18,7 @@ if (!app.Environment.IsDevelopment())
 
 app.MapHub<DrawHub>("/draw");
 app.MapHub<ChatHub>("/chatHub");
+app.MapHub<ChatHub>("/userHub");
 
 app.UseSession();
 app.UseStaticFiles();

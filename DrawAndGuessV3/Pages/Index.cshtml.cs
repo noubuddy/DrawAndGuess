@@ -22,15 +22,13 @@ namespace DrawAndGuessV3.Pages
 
             session.AddUser(user);
 
-            Console.WriteLine(session.SessionID);
             foreach (var us in Session.UserList)
             {
-                Console.WriteLine(us.Item2.ToString());
+                Console.WriteLine(us.Name.ToString());
             }
 
             HttpContext.Session.SetString("name", user.Name);
-            return Redirect("Index");
-            // return Redirect($"Game?username={user.Name}&session={session.SessionID}");
+            return Redirect("Game");
         }
 
         public void OnGet()
