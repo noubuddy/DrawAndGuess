@@ -6,45 +6,16 @@ namespace SignalRDraw
 {
     public class UserHub : Hub
     {
-        public override async Task OnConnectedAsync()
+        static List<User> Users = new List<User>();
+
+        public async Task AddUser(string name)
         {
-            
+            Users.Add(new User { Name = name });
+            foreach (var user in Users) {
+                System.Console.WriteLine(user.Name);
+            }
+            System.Console.WriteLine("----------------");
+            await Clients.All.SendAsync("user", name);
         }
-        // private static List<User> UserList = Session.UserList;
-
-        // public async Task SendMessage(string user)
-        // {
-        //     await Clients.All.SendAsync("RecieveUser", user);
-        // }
-
-        // public void AddUser(User user)
-        // {
-        //     if (user != null)
-        //         UserList.Add(user);
-        // }
-
-        // public static void RemoveUser(User user)
-        // {
-        //     if (user != null)
-        //         UserList.Remove(user);
-        // }
-
-        // public static void ClearUsers()
-        // {
-        //     UserList.Clear();
-        // }
-
-        // public static string GetRandomUser()
-        // {
-        //     Random random = new Random();
-        //     return UserList[random.Next(UserList.Count)].Name.ToString();
-        // }
-
-        // private string Generate(int length)
-        // {
-        //     Random random = new Random();
-        //     const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        //     return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
-        // }
     }
 }
