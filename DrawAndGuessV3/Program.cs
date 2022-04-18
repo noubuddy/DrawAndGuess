@@ -16,9 +16,9 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
 }
 
-app.MapHub<DrawHub>("/drawHub");
+app.MapHub<DrawHub>("/draw");
 app.MapHub<ChatHub>("/chatHub");
-// app.MapHub<UserHub>("/userHub");
+app.MapHub<UserHub>("/userHub");
 
 app.UseWebSockets();
 app.UseSession();
