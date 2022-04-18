@@ -6,29 +6,33 @@ namespace SignalRDraw
 {
     public class UserHub : Hub
     {
-        static List<User> Users = new List<User>();
+        private readonly static ConnectionMapping<string> _connections = new ConnectionMapping<string>();
 
         public override Task OnConnectedAsync()
         {
-            Console.WriteLine("User connected: " + Context.ConnectionId.ToString());
-            return Groups.AddToGroupAsync(Context.ConnectionId, "room");
+            string name = "User1";
+
+            _connections.Add(name, Context.ConnectionId);
+
+            System.Console.WriteLine($"{Context.ConnectionId} connected");
+
+            return base.OnConnectedAsync();
         }
 
-        public Task OnDisconnectedAsync()
+        public override Task OnDisconnectedAsync(Exception? exception)
         {
-            Console.WriteLine("User disconnected: " + Context.ConnectionId.ToString());
-            return Groups.RemoveFromGroupAsync(Context.ConnectionId, "room");
+            string name = "User2";
+
+            _connections.Remove(name, Context.ConnectionId);
+
+            System.Console.WriteLine($"{Context.ConnectionId} disconnected");
+
+            return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task AddUser(string name)
-        {
-            Users.Add(new User { Name = name });
-            foreach (var user in Users)
-            {
-                Console.WriteLine(user.Name);
-            }
-            Console.WriteLine("----------------");
-            await Clients.All.SendAsync("user", name);
-        }
+        // public async Task GetUserName()
+        // {
+        //     await Clients.Caller.SendAsync("GetUserName");
+        // }
     }
 }
