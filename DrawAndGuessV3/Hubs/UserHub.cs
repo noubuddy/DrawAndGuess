@@ -10,13 +10,13 @@ namespace SignalRDraw
 
         public override Task OnConnectedAsync()
         {
-            System.Console.WriteLine("User connected: " + Context.ConnectionId.ToString());
+            Console.WriteLine("User connected: " + Context.ConnectionId.ToString());
             return Groups.AddToGroupAsync(Context.ConnectionId, "room");
         }
 
         public Task OnDisconnectedAsync()
         {
-            System.Console.WriteLine("User disconnected: " + Context.ConnectionId.ToString());
+            Console.WriteLine("User disconnected: " + Context.ConnectionId.ToString());
             return Groups.RemoveFromGroupAsync(Context.ConnectionId, "room");
         }
 
@@ -25,9 +25,9 @@ namespace SignalRDraw
             Users.Add(new User { Name = name });
             foreach (var user in Users)
             {
-                System.Console.WriteLine(user.Name);
+                Console.WriteLine(user.Name);
             }
-            System.Console.WriteLine("----------------");
+            Console.WriteLine("----------------");
             await Clients.All.SendAsync("user", name);
         }
     }

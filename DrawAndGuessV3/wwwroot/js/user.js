@@ -1,4 +1,4 @@
-var connectionUser = new signalR.HubconnectionUserBuilder().withUrl("/userHub").build();
+var connectionUser = new signalR.HubConnectionBuilder().withUrl("/userHub").build();
 
 connectionUser.on('user', function (name) {
     var name = document.getElementById("name").innerHTML;
