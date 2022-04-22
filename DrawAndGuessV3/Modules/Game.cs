@@ -2,6 +2,7 @@ namespace DrawAndGuessV3.Modules
 {
     public class Game
     {
+        // Test list of words
         public static List<string> Words = new List<string>()
         {
             "apple",
@@ -12,6 +13,7 @@ namespace DrawAndGuessV3.Modules
             "strawberry"
         };
 
+        // Randomly select a word from the list
         public static string GetRandomWord()
         {
             Random random = new Random();
