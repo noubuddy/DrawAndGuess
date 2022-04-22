@@ -3,6 +3,7 @@ using DrawAndGuessV3.Models;
 
 namespace DrawAndGuessV3.Modules
 {
+#nullable disable
     public class ConnectionMapper
     {
         public static List<User> Users = new List<User>();

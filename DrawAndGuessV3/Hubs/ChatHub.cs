@@ -12,8 +12,7 @@ namespace SignalRDraw
             if (message == UserHub.randomWord)
             {
                 System.Console.WriteLine("Test");
-                await Clients.All.SendAsync("wi
-                n");
+                await Clients.All.SendAsync("win");
             }
 
             await Clients.All.SendAsync("ReceiveMessage", user, message);
