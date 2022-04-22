@@ -1,4 +1,6 @@
-var connectionChat = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+var connectionChat = new signalR.HubConnectionBuilder().withUrl("/chatHub", {
+    skipNegotiation: true
+}).build();
 
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
@@ -15,7 +17,7 @@ connectionChat.start().then(function () {
     return console.error(err.toString());
 });
 
-connectionChat.on('win', () =>{
+connectionChat.on('win', () => {
     alert("The word was guessed!");
 });
 

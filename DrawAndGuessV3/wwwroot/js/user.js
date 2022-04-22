@@ -1,4 +1,6 @@
-var connectionUser = new signalR.HubConnectionBuilder().withUrl("/userHub").build();
+var connectionUser = new signalR.HubConnectionBuilder().withUrl("/userHub", {
+    skipNegotiation: true
+}).build();
 
 connectionUser.start().then(function () {
     console.log("connected!");
@@ -6,19 +8,19 @@ connectionUser.start().then(function () {
     return console.error(err.toString());
 });
 
-connectionUser.on('Drawer', () =>{
+connectionUser.on('Drawer', () => {
     document.getElementById("status").innerHTML = "You are the drawer";
     connectionUser.invoke("StartGame");
 });
 
-connectionUser.on('Guesser', () =>{
+connectionUser.on('Guesser', () => {
     document.getElementById("status").innerHTML = "You are the guesser";
 });
 
-connectionUser.on('startGame', (word) =>{
+connectionUser.on('startGame', (word) => {
     alert("The word is: " + word);
 });
 
-connectionUser.on('win', () =>{
+connectionUser.on('win', () => {
     alert("The word was guessed!");
 });
