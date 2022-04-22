@@ -1,5 +1,5 @@
 var connectionUser = new signalR.HubConnectionBuilder().withUrl("/userHub", {
-    skipNegotiation: true
+    skipNegotiation: false
 }).build();
 
 connectionUser.start().then(function () {

@@ -3,7 +3,7 @@
 var unsentStrokes = [];
 
 var connection = new signalR.HubConnectionBuilder().withUrl('/drawHub', {
-    skipNegotiation: true
+    skipNegotiation: false
 }).build();
 
 connection.on('newStroke', drawStroke);

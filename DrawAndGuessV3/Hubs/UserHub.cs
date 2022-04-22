@@ -19,7 +19,7 @@ namespace SignalRDraw
 
             System.Console.WriteLine($"{name} connected - {Context.ConnectionId}");
 
-            if (ConnectionMapper.Users.Count >= 2)
+            if (ConnectionMapper.Users.Count >= 3)
             {
                 System.Console.WriteLine("Game has been started");
 

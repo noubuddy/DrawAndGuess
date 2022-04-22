@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR();
 builder.Services.AddSession();
-builder.Services.AddDistributedMemoryCache();
+//builder.Services.AddDistributedMemoryCache();
 
 var app = builder.Build();
 
