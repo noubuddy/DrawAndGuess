@@ -15,6 +15,10 @@ connectionChat.start().then(function () {
     return console.error(err.toString());
 });
 
+connectionChat.on('win', () =>{
+    alert("The word was guessed!");
+});
+
 document.getElementById("sendButton").addEventListener("click", function (event) {
     var user = document.getElementById("name").innerHTML;
     var message = document.getElementById("messageInput").value;

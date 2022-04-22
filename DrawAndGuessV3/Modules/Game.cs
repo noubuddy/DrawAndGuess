@@ -5,12 +5,12 @@ namespace DrawAndGuessV3.Modules
         // Test list of words
         public static List<string> Words = new List<string>()
         {
-            "apple",
-            "banana",
-            "orange",
-            "pear",
-            "grape",
-            "strawberry"
+            "федотов",
+            "хуй",
+            "губанов",
+            "шрек",
+            "наруберг",
+            "жопа"
         };
 
         // Randomly select a word from the list

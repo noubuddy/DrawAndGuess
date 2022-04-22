@@ -1,7 +1,24 @@
 var connectionUser = new signalR.HubConnectionBuilder().withUrl("/userHub").build();
 
 connectionUser.start().then(function () {
-    // Some code here
+    console.log("connected!");
 }).catch(function (err) {
     return console.error(err.toString());
+});
+
+connectionUser.on('Drawer', () =>{
+    document.getElementById("status").innerHTML = "You are the drawer";
+    connectionUser.invoke("StartGame");
+});
+
+connectionUser.on('Guesser', () =>{
+    document.getElementById("status").innerHTML = "You are the guesser";
+});
+
+connectionUser.on('startGame', (word) =>{
+    alert("The word is: " + word);
+});
+
+connectionUser.on('win', () =>{
+    alert("The word was guessed!");
 });
