@@ -9,7 +9,6 @@ namespace SignalRDraw
     {
         private static string randomUser;
         public static string randomWord;
-        // private readonly static ConnectionMapping<string> _connections = new ConnectionMapping<string>();
 
         public override Task OnConnectedAsync()
         {
@@ -17,20 +16,29 @@ namespace SignalRDraw
 
             ConnectionMapper.Users.Add(new User { Name = name, ConnectionId = Context.ConnectionId });
 
+            Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine($"{name} connected - {Context.ConnectionId}");
+            Console.ForegroundColor = ConsoleColor.White;
 
-            if (ConnectionMapper.Users.Count >= 3)
+            Clients.All.SendAsync("ClearUsers");
+            System.Console.WriteLine("------------------------------");
+            foreach (var user in ConnectionMapper.Users)
             {
-                System.Console.WriteLine("Game has been started");
-
-                string randomConnectionId = ConnectionMapper.GetRandomConnectionId();
-                System.Console.WriteLine($"Random connection id: {randomConnectionId}");
-                randomUser = randomConnectionId;
-
-                Clients.Client(randomConnectionId).SendAsync("Drawer");
-                Clients.AllExcept(randomConnectionId).SendAsync("Guesser");
-                Clients.All.SendAsync("GameStarted");
+                Clients.All.SendAsync("ShowUsers", user.Name);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                System.Console.WriteLine(user.Name);
+                Console.ForegroundColor = ConsoleColor.White;
             }
+            System.Console.WriteLine("------------------------------");
+
+            System.Console.WriteLine($"{ConnectionMapper.Users.Count} users connected");
+            System.Console.WriteLine();
+
+            Clients.All.SendAsync("ReceiveMessage");
+
+
+            // if (ConnectionMapper.Users.Count >= 2)
+            //     StartGame();
 
             return base.OnConnectedAsync();
         }
@@ -39,21 +47,34 @@ namespace SignalRDraw
         {
             string name = Context.GetHttpContext().Session.GetString("name");
 
-            ConnectionMapper.Users.Add(new User { Name = name, ConnectionId = Context.ConnectionId });
+            ConnectionMapper.Users.RemoveAll(x => x.ConnectionId == Context.ConnectionId);
 
             System.Console.WriteLine($"{name} disconnected - {Context.ConnectionId}");
+            System.Console.WriteLine($"{ConnectionMapper.Users.Count} users connected");
 
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task StartGame()
+        public async Task GenerateRandomWord()
         {
             string word = Game.GetRandomWord();
             randomWord = word;
             System.Console.WriteLine($"Random word 1: {word}");
-            await Clients.Client(randomUser).SendAsync("startGame", word);
+            await Clients.Client(randomUser).SendAsync("StartGame", word);
         }
 
+        private void StartGame()
+        {
+            System.Console.WriteLine("Game has been started");
 
+            string randomConnectionId = ConnectionMapper.GetRandomConnectionId();
+            System.Console.WriteLine($"Random connection id: {randomConnectionId}");
+            randomUser = randomConnectionId;
+
+            Clients.Client(randomConnectionId).SendAsync("Drawer");
+            Clients.AllExcept(randomConnectionId).SendAsync("Guesser");
+            Clients.All.SendAsync("GameStarted");
+
+        }
     }
 }

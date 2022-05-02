@@ -3,14 +3,15 @@ namespace DrawAndGuessV3.Modules
     public class Game
     {
         // Test list of words
-        public static List<string> Words = new List<string>()
+        public static List<string> Words = new()
         {
-            "федотов",
-            "хуй",
-            "губанов",
-            "шрек",
-            "наруберг",
-            "жопа"
+            "автобус",
+            "машина",
+            "дом",
+            "яблоко",
+            "солнце",
+            "жопа",
+            "пизда"
         };
 
         // Randomly select a word from the list

@@ -8,16 +8,27 @@ connectionUser.start().then(function () {
     return console.error(err.toString());
 });
 
+connectionUser.on('ClearUsers', () => {
+    document.getElementById("players").innerHTML = "";
+});
+
+connectionUser.on('ShowUsers', (user) => {
+    list = document.getElementById("players");
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(user));
+    list.appendChild(entry);
+});
+
 connectionUser.on('Drawer', () => {
     document.getElementById("status").innerHTML = "You are the drawer";
-    connectionUser.invoke("StartGame");
+    connectionUser.invoke("GenerateRandomWord");
 });
 
 connectionUser.on('Guesser', () => {
     document.getElementById("status").innerHTML = "You are the guesser";
 });
 
-connectionUser.on('startGame', (word) => {
+connectionUser.on('StartGame', (word) => {
     alert("The word is: " + word);
 });
 
