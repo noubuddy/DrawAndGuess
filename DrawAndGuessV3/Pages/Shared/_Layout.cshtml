@@ -1,46 +1,62 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Draw & Guess</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="icon" href="~/images/icons/favicon.png" />
+    <link rel="apple-touch-icon" href="~/images/icons/apple-touch-icon.png" />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DrawAndGuessV3.styles.css" asp-append-version="true" />
+
+    <!-- Animations CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+
+    <!-- Title -->
+    <title>Draw & Guess</title>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">DrawAndGuessV3</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
+<body onload="changeBg()">
+    <section>
+        <header>
+            <nav class="navbar containerc">
+                <a asp-area="" asp-page="/Index"><img src='images/icons/logo.png' class="logo logoplus" ></a>
+                <input type="checkbox" id="toggler">
+                <label for="toggler"><i class="ri-menu-line"></i></label>
+            </nav>
+        </header>
+    </section>
+
+    <div class="containerc">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - DrawAndGuessV3
-        </div>
-    </footer>
+    <section id="basic-footer" class="sectionfooter">
+            <div class="footer-basic">
+                <footer>
+                    <div class="social">
+                        <a href="https://www.instagram.com/a2b_projects/"><i class="icon ion-social-instagram"></i></a>
+                        <a href="https://www.funcage.com/"><i class="icon ion-social-snapchat"></i></a>
+                        <a href="https://www.facebook.com/groups/442518676508064"><i class="icon ion-social-facebook"></i></a>
+                    </div>
+                    <p class="copyright">The owner of this site is not responsible for any user generated content (drawings, messages, usernames)</p>
+                    <a href="terms.html">
+                        <p class="copyright">Terms of Service</p>
+                    </a>
+                    <p class="copyright">WhileTrue © 2022</p>
+                </footer>
+            </div>
+        </section>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)

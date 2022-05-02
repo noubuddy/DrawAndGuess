@@ -9,24 +9,37 @@
     ViewData["Title"] = "Game";
 }
 
-<style>
-    #draw-canvas {
-        background-color: #ddd;
-    }
-</style>
-
-<div class="conainer">
-    <div class="row">
-        <div class="col">
-            <div>
-                <input type="color" id="color" value="#000000" />
-                <input type="button" id="clear" value="Clear" />
-            </div>
-            <div>
-                <canvas id="draw-canvas" height="500" width="800"></canvas>
-            </div>
+<div>
+    <div class="paintbox">
+        <div>
+            <input type="color" id="color" class="colorbtn" value="#000000" />
+            <input type="button" id="clear" class="btn-primary clearbtn" value="Clear" />
         </div>
-        <div class="col">
+        <div>
+            <canvas id="draw-canvas" height="600" width="800"></canvas>
+        </div>
+    </div>
+
+    <div id='bodybox'>
+        <div id='chatborder'>
+          <p id="chatlog12" class="chatlog">&nbsp;</p>
+          <p id="chatlog11" class="chatlog">&nbsp;</p>
+          <p id="chatlog10" class="chatlog">&nbsp;</p>
+          <p id="chatlog9" class="chatlog">&nbsp;</p>
+          <p id="chatlog8" class="chatlog">&nbsp;</p>
+          <p id="chatlog7" class="chatlog">&nbsp;</p>
+          <p id="chatlog6" class="chatlog">&nbsp;</p>
+          <p id="chatlog5" class="chatlog">&nbsp;</p>
+          <p id="chatlog4" class="chatlog">&nbsp;</p>
+          <p id="chatlog3" class="chatlog">&nbsp;</p>
+          <p id="chatlog2" class="chatlog">&nbsp;</p>
+          <p id="chatlog1" class="chatlog">&nbsp;</p>
+          
+          <input type="text" name="chat" id="chatbox" placeholder="Type your guess here..."
+            onfocus="placeHolder()">  
+        </div>
+    </div>
+</div>
             <h1>
                 Chat
             </h1>
@@ -71,6 +84,7 @@
         </div>
     </div>
 </div>
+</section>
 
 <script src="https://unpkg.com/@@aspnet/signalr@@1.0.0/dist/browser/signalr.js"></script>
 <script src="js/draw.js"></script>

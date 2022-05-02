@@ -1,18 +1,433 @@
-html {
-  font-size: 14px;
+/* some root things */
+
+body {
+  display: block;
+  margin: 0px;
+  background-color: #222;
+}
+section {
+  padding: 10px 0px;
+  overflow: hidden;
+  position: relative;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+* {
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 1px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #20252A;
+  border-radius: 1px;
+  outline: 1px solid white;
+}
+
+/* navbar */
+
+.containerc {
+  max-width: 1700px;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #222;
+  
+}
+
+.navbar a {
+  display: block;
+  position: relative;
+  color: white;
+  transition: 0.3s;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  text-decoration: none;
+}
+.navbar a:hover{
+  color: #adadad;
+  text-decoration: underline;
+}
+
+.logo {
+  margin-left: 50%;
+  max-height: 80px;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+#toggler,
+.navbar label {
+  display: none;
+}
+
+.logoplus {
+  transition: 1s; /* Время эффекта */
+}
+.logoplus:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+  }
+
+  .list {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+  }
+
+  .navbar label {
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+  }
+
+  #toggler:checked~.menu {
+      max-height: 100%;
+  }
+}
+/* hero */
+
+#herogame {
+  width: 100%;
+  height: 80vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url("https://media3.giphy.com/media/d31vTpVi1LAcDvdm/giphy.gif?cid=ecf05e47u7ls0aojskfvob561jutuxu9zoxtjpsir9muu0bg&rid=giphy.gif&ct=g") top center no-repeat;
+  background-size: cover;
+}
+
+#herogame:before {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+/* hero */
+
+#hero {
+  width: 100%;
+  height: 80vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url("https://media3.giphy.com/media/d31vTpVi1LAcDvdm/giphy.gif?cid=ecf05e47u7ls0aojskfvob561jutuxu9zoxtjpsir9muu0bg&rid=giphy.gif&ct=g") top center no-repeat;
+  background-size: cover;
+  text-align: center;
+  padding-top: 10%;
+}
+
+#hero:before {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+#hero h1 {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  font-size: 100px;
+  font-weight: 650;
+  color: #fff;
+  line-height: 110px;
+  text-align: center;
+}
+
+#hero h3 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  margin:0;
+}
+
+#hero p {
+  font-family: "Open Sans", sans-serif;
+  text-align: left;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+#hero .blocktext {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30rem;
+}
+@media (max-width: 600px) {
+  #hero .blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 24rem;
+  }
+  #hero h1 {
+    font-family: "Raleway", sans-serif;
+    margin: 0;
+    font-size: 40px;
+    font-weight: 650;
+    color: #fff;
+    line-height: 110px;
+    text-align: center;
   }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.something {
+  display: none;
 }
 
-body {
-  margin-bottom: 60px;
+.showI {
+  display: block;
 }
+
+#hero .input-get-started {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 1px;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 12%;
+  padding-right: 9%;
+  border-radius: 4px;
+  transition: 0.5s;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+.btn-hover {
+  width: 200px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 2px;
+  font-family: "Raleway", sans-serif;
+
+  border-radius: 50px;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+  background-position: 100% 0;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+  outline: none;
+}
+
+.btn-hover.color-1 {
+  background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+}
+
+
+/* footer */
+  
+.footer-basic {
+  padding:0px 0;
+  background-color:#222222;
+  color:#4b4c4d;
+}
+
+.footer-basic .social {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer-basic .social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+
+.footer-basic a {
+  margin-top:10px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+
+.sectionfooter {
+  padding: 50px 0px;
+  overflow: hidden;
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+}
+
+@import './../main.scss';
+
+
+/* chatbox */
+
+#bodybox {
+  max-width: 500px;
+  font-family: "Raleway", sans-serif;
+  background-color: transparent;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  padding-top: 15%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+#chatborder {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 1px;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 4px;
+  transition: 0.5s;
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+.chatlog {
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+.guessedtheword {
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+#chatbox {
+  font-family: "Raleway", sans-serif;
+  height: 40px;
+  width: 80%;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 1px;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+  border-radius: 4px;
+  transition: 0.5s;
+  margin-top: 20px;
+  margin-right: 10%;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+.paintbox {
+  margin-left: 10%;
+  max-width: 500px;
+  font-family: "Raleway", sans-serif;
+  background-color: transparent;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding-top: 5%;
+  margin-right: 10%;
+}
+  .colorbtn{
+    border-radius: 4px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: white;
+    font-family: "Raleway", sans-serif;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 0.1rem 0.5rem;
+    margin: 0.25rem;
+    cursor: pointer;
+  }
+
+  .clearbtn {
+    border-radius: 4px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: white;
+    font-family: "Raleway", sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 0.21rem 0.5rem;
+    margin: 0.25rem;
+    cursor: pointer;
+  }
+
+  canvas {
+    background-color: #ddd;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    height: 540px;
+    max-width: 1050px;
+  }

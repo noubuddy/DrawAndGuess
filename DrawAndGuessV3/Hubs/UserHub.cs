@@ -16,26 +16,18 @@ namespace SignalRDraw
 
             ConnectionMapper.Users.Add(new User { Name = name, ConnectionId = Context.ConnectionId });
 
-            Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine($"{name} connected - {Context.ConnectionId}");
-            Console.ForegroundColor = ConsoleColor.White;
 
             Clients.All.SendAsync("ClearUsers");
-            System.Console.WriteLine("------------------------------");
             foreach (var user in ConnectionMapper.Users)
             {
                 Clients.All.SendAsync("ShowUsers", user.Name);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                System.Console.WriteLine(user.Name);
-                Console.ForegroundColor = ConsoleColor.White;
             }
-            System.Console.WriteLine("------------------------------");
 
             System.Console.WriteLine($"{ConnectionMapper.Users.Count} users connected");
             System.Console.WriteLine();
 
-            Clients.All.SendAsync("ReceiveMessage");
-
+            // Clients.All.SendAsync("ReceiveMessage");
 
             // if (ConnectionMapper.Users.Count >= 2)
             //     StartGame();
@@ -50,7 +42,16 @@ namespace SignalRDraw
             ConnectionMapper.Users.RemoveAll(x => x.ConnectionId == Context.ConnectionId);
 
             System.Console.WriteLine($"{name} disconnected - {Context.ConnectionId}");
+
+            Clients.All.SendAsync("ClearUsers");
+            foreach (var user in ConnectionMapper.Users)
+            {
+                Clients.All.SendAsync("ShowUsers", user.Name);
+            }
+
             System.Console.WriteLine($"{ConnectionMapper.Users.Count} users connected");
+            System.Console.WriteLine();
+
 
             return base.OnDisconnectedAsync(exception);
         }
