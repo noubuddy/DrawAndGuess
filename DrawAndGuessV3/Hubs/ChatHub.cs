@@ -4,18 +4,19 @@ namespace SignalRDraw
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string user, string message)
+        public async Task SendMessage(string message)
         {
-            System.Console.WriteLine($"Message: {message}");
-            System.Console.WriteLine($"Random word 2: {UserHub.randomWord}");
+            await Clients.All.SendAsync("ReceiveMessage", message);
+            // System.Console.WriteLine($"Message: {message}");
+            // System.Console.WriteLine($"Random word 2: {UserHub.randomWord}");
 
-            if (message == UserHub.randomWord)
-            {
-                System.Console.WriteLine("Test");
-                await Clients.All.SendAsync("win");
-            }
+            // if (message == UserHub.randomWord)
+            // {
+            //     System.Console.WriteLine("Test");
+            //     await Clients.All.SendAsync("win");
+            // }
 
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            // await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
     }
 }

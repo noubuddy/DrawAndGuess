@@ -15,6 +15,8 @@ connectionUser.on('ClearUsers', () => {
 connectionUser.on('ShowUsers', (user) => {
     list = document.getElementById("players");
     var entry = document.createElement('li');
+    entry.style.color = 'white';
+    entry.style.fontSize = '15px';
     entry.appendChild(document.createTextNode(user));
     list.appendChild(entry);
 });

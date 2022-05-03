@@ -8,20 +8,35 @@
 
     ViewData["Title"] = "Game";
 }
-
-<div>
+<div id="hero2" class="grid-container">
+    <p hidden id="name">@HttpContext.Session.GetString("name")</p>
+    <div id='bodybox2'>
+        <div id='chatborder2'>
+        <p style="color:white; font-size:15px; text-align:center">Remains: <span id="time">60</span> sec</p><hr>
+        <ol id="players">
+            @* <li style="color:white; font-size: 15px;">Anton Nitsiportsik<li>
+            <li style="color:white; font-size: 15px;">Anton Nitsiportsik<li>
+            <li style="color:white; font-size: 15px;">Anton Nitsiportsik<li>
+            <li style="color:white; font-size: 15px;">Anton Nitsiportsik<li>
+            <li style="color:white; font-size: 15px;">Anton Nitsiportsik<li>
+            <li style="color:white; font-size: 15px;">Anton Nitsiportsik<li>
+            <li style="color:white; font-size: 15px;">Anton Nitsiportsik<li>
+            <li style="color:white; font-size: 15px;">Anton Nitsiportsik<li> *@
+        </ol>
+        </div>
+    </div>
     <div class="paintbox">
         <div>
             <input type="color" id="color" class="colorbtn" value="#000000" />
             <input type="button" id="clear" class="btn-primary clearbtn" value="Clear" />
         </div>
         <div>
-            <canvas id="draw-canvas" height="600" width="800"></canvas>
+            <canvas id="draw-canvas" height="584" width="800"></canvas>
         </div>
     </div>
-
     <div id='bodybox'>
         <div id='chatborder'>
+          <p id="chatlog13" class="chatlog">&nbsp;</p>
           <p id="chatlog12" class="chatlog">&nbsp;</p>
           <p id="chatlog11" class="chatlog">&nbsp;</p>
           <p id="chatlog10" class="chatlog">&nbsp;</p>
@@ -35,56 +50,11 @@
           <p id="chatlog2" class="chatlog">&nbsp;</p>
           <p id="chatlog1" class="chatlog">&nbsp;</p>
           
-          <input type="text" name="chat" id="chatbox" placeholder="Type your guess here..."
+          <input type="text" name="chat" id="chatbox" placeholder="Type your guess here..." maxlength="20"
             onfocus="placeHolder()">  
         </div>
     </div>
 </div>
-            <h1>
-                Chat
-            </h1>
-            <p id="status">Waiting for users...</p>
-            <div class="container">
-                <div class="row">&nbsp;</div>
-                <ol id="players">
-                </ol>
-                <div class="row">
-                    <div class="col-2">User</div>
-                    <div class="col-4">
-                        <p id="name">@HttpContext.Session.GetString("name")</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">Message</div>
-                    <div class="col-4"><input type="text" id="messageInput" /></div>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <div class="col-6">
-                        <input type="button" id="sendButton" value="Send Message" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <hr />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <ul id="messagesList"></ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <ul id="userList"></ul>
-                </div>
-            </div>
-            <input id="hdId" type="hidden" />
-        </div>
-    </div>
-</div>
-</section>
 
 <script src="https://unpkg.com/@@aspnet/signalr@@1.0.0/dist/browser/signalr.js"></script>
 <script src="js/draw.js"></script>
