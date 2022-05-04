@@ -12,7 +12,8 @@
     <p hidden id="name">@HttpContext.Session.GetString("name")</p>
     <div id='bodybox2'>
         <div id='chatborder2'>
-        <p style="color:white; font-size:15px; text-align:center">Remains: <span id="time">60</span> sec</p><hr>
+        @* <p id="status" style="color:white; font-size:15px; text-align:center">Remains: <span id="time">60</span> sec</p><hr> *@
+        <p id="status" style="color:white; font-size:15px; text-align:center">Waiting for users...</p><hr>
         <ol id="players">
         </ol>
         </div>

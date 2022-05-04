@@ -1,17 +1,19 @@
 ﻿function startTimer(duration, display) {
-  var timer = duration, minutes, seconds;
+  var timer = duration,
+    minutes,
+    seconds;
   setInterval(function () {
-      minutes = parseInt(timer / 60, 10)
-      seconds = parseInt(timer % 60, 10);
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
 
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-      display.textContent = minutes + ":" + seconds;
+    display.textContent = minutes + ":" + seconds;
 
-      if (--timer < 0) {
-          timer = duration;
-      }
+    if (--timer < 0) {
+      timer = duration;
+    }
   }, 1000);
 }
 
@@ -55,7 +57,7 @@ function changeBg() {
   }
 
   var fiveMinutes = 60,
-      display = document.querySelector('#time');
+    display = document.querySelector("#time");
   startTimer(fiveMinutes, display);
 }
 
@@ -80,5 +82,3 @@ function view(n) {
 // function placeHolder() {
 //   document.getElementById("chatbox").placeholder = "";
 // }
-
-
