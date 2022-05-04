@@ -77,8 +77,8 @@ function view(n) {
 //clears the placeholder text ion the chatbox
 //this function is set to run when the users brings focus to the chatbox, by clicking on it
 
-function placeHolder() {
-  document.getElementById("chatbox").placeholder = "";
-}
+// function placeHolder() {
+//   document.getElementById("chatbox").placeholder = "";
+// }
 
 
