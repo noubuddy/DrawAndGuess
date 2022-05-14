@@ -10,8 +10,8 @@ namespace DrawAndGuessV3.Modules
             "дом",
             "яблоко",
             "солнце",
-            "жопа",
-            "пизда"
+            "банан",
+            "кровать"
         };
 
         // Randomly select a word from the list

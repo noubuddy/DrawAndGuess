@@ -9,6 +9,8 @@ namespace SignalRDraw
     {
         private static string randomUser;
         public static string randomWord;
+        private int time = 60;
+        private static bool isTimerStarted = false;
 
         public override Task OnConnectedAsync()
         {
@@ -27,10 +29,8 @@ namespace SignalRDraw
             System.Console.WriteLine($"{ConnectionMapper.Users.Count} users connected");
             System.Console.WriteLine();
 
-            // Clients.All.SendAsync("ReceiveMessage");
-
-            // if (ConnectionMapper.Users.Count >= 2)
-            //     StartGame();
+            if (ConnectionMapper.Users.Count >= 2)
+                StartGame();
 
             return base.OnConnectedAsync();
         }
@@ -64,6 +64,20 @@ namespace SignalRDraw
             await Clients.Client(randomUser).SendAsync("StartGame", word);
         }
 
+        public async Task CountDownTimer()
+        {
+            if (!isTimerStarted)
+            {
+                isTimerStarted = true;
+                while (time > 0)
+                {
+                    await Clients.All.SendAsync("CountDown", time);
+                    time--;
+                    await Task.Delay(1000);
+                }
+            }
+        }
+
         private void StartGame()
         {
             System.Console.WriteLine("Game has been started");
@@ -74,8 +88,6 @@ namespace SignalRDraw
 
             Clients.Client(randomConnectionId).SendAsync("Drawer");
             Clients.AllExcept(randomConnectionId).SendAsync("Guesser");
-            Clients.All.SendAsync("GameStarted");
-
         }
     }
 }
