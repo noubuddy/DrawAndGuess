@@ -9,7 +9,7 @@ connectionUser
   .start()
   .then(function () {
     console.log("connected!");
-    connectionUser.invoke("CountDownTimer");
+    // connectionUser.invoke("CountDownTimer");
   })
   .catch(function (err) {
     return console.error(err.toString());
@@ -41,10 +41,6 @@ connectionUser.on("StartGame", (word) => {
   alert("The word is: " + word);
 });
 
-connectionUser.on("win", () => {
-  alert("The word was guessed!");
-});
-
-connectionUser.on("CountDown", (time) => {
-  console.log(time);
-});
+// connectionUser.on("CountDown", (time) => {
+//   console.log(time);
+// });

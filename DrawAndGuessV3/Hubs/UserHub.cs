@@ -64,19 +64,19 @@ namespace SignalRDraw
             await Clients.Client(randomUser).SendAsync("StartGame", word);
         }
 
-        public async Task CountDownTimer()
-        {
-            if (!isTimerStarted)
-            {
-                isTimerStarted = true;
-                while (time > 0)
-                {
-                    await Clients.All.SendAsync("CountDown", time);
-                    time--;
-                    await Task.Delay(1000);
-                }
-            }
-        }
+        // public async Task CountDownTimer()
+        // {
+        //     if (!isTimerStarted)
+        //     {
+        //         isTimerStarted = true;
+        //         while (time > 0)
+        //         {
+        //             await Clients.All.SendAsync("CountDown", time);
+        //             time--;
+        //             await Task.Delay(1000);
+        //         }
+        //     }
+        // }
 
         private void StartGame()
         {

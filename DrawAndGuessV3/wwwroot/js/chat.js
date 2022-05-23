@@ -22,6 +22,10 @@ connectionChat.on("ReceiveMessage", function (message) {
   }
 });
 
+connectionChat.on("win", () => {
+  alert("The word was guessed!");
+});
+
 document.onkeypress = keyPress;
 function keyPress(e) {
   var x = e || window.event;
